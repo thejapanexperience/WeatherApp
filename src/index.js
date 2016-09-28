@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-import './stores/PokemonStore'
+import './stores/WeatherStore'
 
 import Layout from './components/Layout'
 

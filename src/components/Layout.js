@@ -1,123 +1,155 @@
 import React, { Component } from 'react'
-import PokemonActions from '../actions/PokemonActions'
-import PokemonStore from '../stores/PokemonStore'
+import WeatherActions from '../actions/WeatherActions'
+import WeatherStore from '../stores/WeatherStore'
 
 export default class Layout extends Component {
   constructor() {
     super();
 
     this.state = {
-      pokemon: PokemonStore.getPokemon(),
-      pokemons: PokemonStore.getEmAll()
+      weather: WeatherStore.getWeather(),
+      forecast: WeatherStore.getForecast()
     }
-    this.fetchPokemon = this.fetchPokemon.bind(this)
-    this.fetchPokemonFromList = this.fetchPokemonFromList.bind(this)
-    this.catchThemAll = this.catchThemAll.bind(this)
+    this._fetchWeather = this._fetchWeather.bind(this)
+    this._fetchForecast = this._fetchForecast.bind(this)
     this._onChange = this._onChange.bind(this)
   }
 
   componentWillMount() {
-    PokemonStore.startListening(this._onChange);
+    WeatherStore.startListening(this._onChange);
   }
 
   componentWillUnmount() {
-    PokemonStore.stopListening(this._onChange);
+    WeatherStore.stopListening(this._onChange);
   }
 
   _onChange() {
     this.setState ({
-      pokemon: PokemonStore.getPokemon(),
-      pokemons: PokemonStore.getEmAll()
-
+      weather: WeatherStore.getWeather(),
+      forecast: WeatherStore.getForecast()
     })
   }
 
-  fetchPokemon() {
-    let{ pokemonNumber } = this.refs
-    let number = pokemonNumber.value;
-    PokemonActions.fetchPokemon(number);
+  _fetchWeather() {
+    let{ state, city } = this.refs
+    if(!city.val){
+      WeatherActions.fetchDefaultWeather();
+    } else {
+    let stateVal = state.value
+    let cityVal = city.value
+    let temp = `${stateVal}/${cityVal}`
+    let location = temp.replace(/ /g, "_");
+    WeatherActions.fetchWeather(location);
+    }
   }
-
-  fetchPokemonFromList(index) {
-    let number = index + 1;
-    console.log(number)
-    PokemonActions.fetchPokemon(number);
-  }
-
-  catchThemAll() {
-    let number =""
-    PokemonActions.fetchAllPokemon(number);
+   _fetchForecast() {
+    let{ state, city } = this.refs
+    if(!city.val){
+      WeatherActions.fetchDefaultForecast();
+    } else {
+    let stateVal = state.value
+    let cityVal = city.value
+    let temp = `${stateVal}/${cityVal}`
+    let location = temp.replace(/ /g, "_");
+    WeatherActions.fetchForecast(location);
+    }
   }
 
   render() {
 
-    const { pokemon, pokemons } = this.state;
-    console.log(pokemons)
+    const { weather, forecast } = this.state;
+    console.log(weather, forecast)
 
-    if (pokemon === null){
-    return (
-      <div className='container'>
-        <h1 id="title" className='text-center'>Flux Poke-API Viewer</h1>
 
-        <div className="row text-center">
-          <div id="getBox">Input a number to get your pokemon!</div>
-          <input id="input" type="number" ref="pokemonNumber" defaultValue="1"/> <span>  </span>
-          <button id="inputButton" onClick={this.fetchPokemon}  className="btn btn-info">Get Pokemon</button>
-        </div>
-
-        <div className="row">          
-        </div>
-        </div>
-
-    )} else {
+    if (weather === null && forecast === null) {
 
     return (
       <div className='container'>
-        <h1 id="title" className='text-center'>Flux Poke-API Viewer</h1>
+        <h1 id="title" className='text-center'>Weather App</h1>
 
         <div className="row text-center">
-          <div id="getBox">Input a number to get your pokemon!</div>
-          <input id="input" type="number" ref="pokemonNumber" defaultValue="1"/> <span>  </span>
-          <button id="inputButton" onClick={this.fetchPokemon}  className="btn btn-info">Get Pokemon</button>
+          <div id="getBox">Choose your location to get the current weather</div>
+          <input id="state" type="text" ref="city" placeholder="CA"/> <span>  </span>
+          <input id="city" type="text" ref="city" placeholder="San Francisco" /> <span>  </span>
+          <button onClick={this._fetchWeather} id="weather" className="btn btn-info">Get Weather</button>
+          <button onClick={this._fetchForecast} id="forecast" className="btn btn-info">Get Forecast</button>
+        </div>      
         </div>
-        <hr/>
-        <div className="col-xs-12">
-        <table className="table text-center" >
-          <thead className="text-center">
+
+    )} else if (weather !== null && forecast === null) {
+
+    return (
+      <div className='container'>
+        <h1 id="title" className='text-center'>Weather App</h1>
+
+        <div className="row text-center">
+          <div id="getBox">Choose your location to get the current weather</div>
+          <input id="state" type="text" ref="city" placeholder="CA"/> <span>  </span>
+          <input id="city" type="text" ref="city" placeholder="San Francisco" /> <span>  </span>
+          <button onClick={this._fetchWeather} id="inputButton" className="btn btn-info">Get Weather</button>
+          <button onClick={this._fetchForecast} id="forecast" className="btn btn-info">Get Forecast</button>
+
+        </div>
+        <div className="col-xs-12 text-center">
+        <h1>Current Weather in {weather.current_observation.display_location.city}</h1>
+        </div>
+        <table className="table" >
+          <thead>
             <tr>
-              <th>Image</th>
-              <th>Name</th>
-              <th>Att</th>
-              <th>Def</th>
-              <th>HP</th>
+              <th>Weather</th>
+              <th>Temperature °C</th>
             </tr>
           </thead>
-          <tbody className="text-center">
+          <tbody>
             <tr>
-              <td><img id="image" src={pokemon.sprites.front_default} alt=""/></td>
-              <td>{pokemon.name}</td>
-              <td>{pokemon.stats[4].base_stat}</td>
-              <td>{pokemon.stats[3].base_stat}</td>
-              <td>{pokemon.stats[5].base_stat}</td>
+              <td><img id="image" src={weather.current_observation.icon_url} alt=""/></td>
+              <td>{weather.current_observation.temp_c}</td>
             </tr>
           </tbody>
           </table>
-          <button id="seeAll" onClick={this.catchThemAll} className="btn btn-block btn-large btn-warning">See All Pokemon</button>
-          <hr/>
           </div>
-          <div className="col-xs-12 text-center">
-          {pokemons.map((poke, index) => (
-            <span key={index}>
-            <button className="btn btn-large btn-success pokeButtons" onClick={this.fetchPokemonFromList.bind(null, index)}>{poke.pokemon_species.name}</button>
-            </span>
-            ))}
-          </div>
+          )} else if (weather === null && forecast !== null) {
 
+      return (
+        <div className='container'>
+          <h1 id="title" className='text-center'>Weather App</h1>
+  
+          <div className="row text-center">
+            <div id="getBox">Choose your location to get the current weather</div>
+            <input id="state" type="text" ref="city" placeholder="CA"/> <span>  </span>
+            <input id="city" type="text" ref="city" placeholder="San Francisco" /> <span>  </span>
+            <button onClick={this._fetchWeather} id="inputButton" className="btn btn-info">Get Weather</button>
+            <button onClick={this._fetchForecast} id="forecast" className="btn btn-info">Get Forecast</button>
+  
           </div>
-          )}
+          <div className="col-xs-12">
+          <h1>Forecast for your current location</h1>
+          <div className="col-xs-6"><table className="table" >
+            <tbody className="text-center">
+            {forecast.forecast.txt_forecast.forecastday.map((day,index) => (
+              <tr key={index}>
+                <td id="forecastTime">{day.title}</td>
+              </tr>
+              ))}
+            </tbody>
+            </table>
+            </div>
+            <div className="col-xs-6">
+            <table className="table text-center col-xs-6" >
+            <tbody className="text-center">
+            {forecast.forecast.txt_forecast.forecastday.map((day,index) => (
+              <tr key={index}>
+                <td id="forecastImage"><img src={day.icon_url} alt=""/></td>
+              </tr>
+              ))}
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+            )}
+    
   }
 }
 
 
-{/*            <button className="btn btn-block btn-success" onClick={fetchPokemonFromList.bind(null, index)}>{poke.name}</button>
-*/}

@@ -1,43 +1,37 @@
+#forecastImage {
+height: 80px}
+
+#forecastTime {
+  height: 80px;
+}
+
 #image {
   size: 80px;
-}
-
-#seeAll {
-  color: black;
-}
-
-.table > thead > tr > th {
-    vertical-align: bottom;
-    border-bottom: 1px solid black;
-}
-
-.table > tbody > tr > td {
-    vertical-align: bottom;
-    border-bottom: 1px solid black;
 }
 
 #title {
   font-size: 100px;
 }
 
-hr {
-  color: black;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border: 0;
-  border-top: 1px solid #000000;
-}
-
 #getBox {
   font-size: 40px;
-  font-family: 'Luckiest Guy', cursive;
 }
 
-#input {
+#state {
   font-size: 20px;
-  font-family: 'Luckiest Guy', cursive;
   height: 40px;
-  width: 70px;
+  width: 200px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: yellow;
+  border: 1px solid black;
+  color: black;
+}
+
+#city {
+  font-size: 20px;
+  height: 40px;
+  width: 200px;
   border-radius: 5px;
   text-align: center;
   background-color: pink;
@@ -45,9 +39,12 @@ hr {
   color: black;
 }
 
-#inputButton {
+h1 {
+  text-align: center;
+}
+
+button {
   font-size: 20px;
-  font-family: 'Luckiest Guy', cursive;
   height: 40px;
   width: 200px;
   border-radius: 5px;
@@ -56,48 +53,21 @@ hr {
   border: 1px solid black;
 }
 
-h1 {
-  font-family: 'Luckiest Guy', cursive;
-}
 
 input {
   height: 30px;
 }
 
-.table {
+/*.table {
   font-size: 50px;
   font-family: 'Luckiest Guy', cursive;
   vertical-align: middle;
 }
-
-th {
+*/
+/*th {
   text-align: center;
   vertical-align: middle;
 }
 
 td {
-}
-
-button {
-  font-family: 'Luckiest Guy', cursive;
-  color: black;
-}
-
-.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
-    padding: 8px;
-    line-height: 1.42857;
-    vertical-align: middle;
-    border-top: 1px solid #ddd;
-}
-
-.pokeButtons {
-  width: 100px;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 12px;
-  margin: 0 5px 2px 0;
-}
-
-body {
-  background-color: #383340;
-  color: white;
-}
+}*/

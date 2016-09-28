@@ -1,17 +1,17 @@
 import AppDispatcher from '../AppDispatcher'
 
 const ServerActions = {
-  receivePokemon(pokemon) {
+  receiveWeather(weather) {
     AppDispatcher.dispatch({
-      type: 'RECEIVE_POKEMON',
-      payload: { pokemon }
+      type: 'RECEIVE_WEATHER',
+      payload: { weather }
     })
   },
 
-  receiveAllPokemon(pokemon) {
+  receiveForecast(forecast) {
     AppDispatcher.dispatch({
-      type: 'RECEIVE_ALL_POKEMON',
-      payload: { pokemon }
+      type: 'RECEIVE_FORECAST',
+      payload: { forecast }
     })
   }
 }

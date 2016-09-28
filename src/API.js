@@ -3,22 +3,32 @@ import ServerActions from './actions/ServerActions'
 
 const API = {
 
-  fetchPokemon(number) {
-
-    $.get(`https://pokeapi.co/api/v2/pokemon/${number}` , pokemon => {
-
-      ServerActions.receivePokemon(pokemon)
-
+  fetchWeather(location) {
+      console.log(location)
+      $.get(`http://api.wunderground.com/api/04566820ef16d78a/conditions/q/${location}.json` , weather => {
+      ServerActions.receiveWeather(weather)
     });
 
   },
 
-  fetchAllPokemon(number) {
+  fetchDefaultWeather() {
+      $.get(`http://api.wunderground.com/api/04566820ef16d78a/conditions/q//autoip.json` , weather => {
+      ServerActions.receiveWeather(weather)
+    });
 
-    $.get(`https://pokeapi.co/api/v2/pokedex/1/` , pokemon => {
+  },
 
-      ServerActions.receiveAllPokemon(pokemon)
+  fetchForecast(location) {
+      console.log(location)
+      $.get(`http://api.wunderground.com/api/04566820ef16d78a/forecast/q/${location}.json` , forecast => {
+      ServerActions.receiveForecast(forecast)
+    });
 
+  },
+
+  fetchDefaultForecast() {
+      $.get(`http://api.wunderground.com/api/04566820ef16d78a/forecast/q//autoip.json` , forecast => {
+      ServerActions.receiveForecast(forecast)
     });
 
   }
