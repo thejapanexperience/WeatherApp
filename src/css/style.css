@@ -1,0 +1,63 @@
+#image {
+  size: 80px;
+}
+
+#title {
+  font-size: 100px;
+}
+
+#getBox {
+  font-size: 40px;
+  font-family: 'Luckiest Guy', cursive;
+}
+
+#input {
+  font-size: 20px;
+  font-family: 'Luckiest Guy', cursive;
+  height: 40px;
+  width: 70px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#inputButton {
+  font-size: 20px;
+  font-family: 'Luckiest Guy', cursive;
+  height: 40px;
+  width: 200px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Luckiest Guy', cursive;
+}
+
+input {
+  height: 30px;
+}
+
+.table {
+  font-size: 50px;
+  font-family: 'Luckiest Guy', cursive;
+  vertical-align: middle;
+}
+
+th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+td {
+}
+
+button {
+  font-family: 'Luckiest Guy', cursive;
+}
+
+.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+    padding: 8px;
+    line-height: 1.42857;
+    vertical-align: middle;
+    border-top: 1px solid #ddd;
+}
