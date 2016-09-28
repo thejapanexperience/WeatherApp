@@ -52,6 +52,7 @@ export default class Layout extends Component {
   render() {
 
     const { pokemon, pokemons } = this.state;
+    console.log(pokemons)
 
     if (pokemon === null){
     return (
@@ -101,7 +102,7 @@ export default class Layout extends Component {
             </tr>
           </tbody>
           </table>
-          <button id="seeAll" onClick={this.catchThemAll} className="btn btn-block btn-large btn-danger">See All Pokemon</button>
+          <button id="seeAll" onClick={this.catchThemAll} className="btn btn-block btn-large btn-warning">See All Pokemon</button>
           <hr/>
           </div>
           <div className="col-xs-12 text-center">

@@ -42,6 +42,7 @@ hr {
   text-align: center;
   background-color: pink;
   border: 1px solid black;
+  color: black;
 }
 
 #inputButton {
@@ -97,5 +98,6 @@ button {
 }
 
 body {
-  background-color: orange;
+  background-color: #383340;
+  color: white;
 }
