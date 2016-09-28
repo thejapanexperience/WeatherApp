@@ -2,8 +2,30 @@
   size: 80px;
 }
 
+#seeAll {
+  color: black;
+}
+
+.table > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 1px solid black;
+}
+
+.table > tbody > tr > td {
+    vertical-align: bottom;
+    border-bottom: 1px solid black;
+}
+
 #title {
   font-size: 100px;
+}
+
+hr {
+  color: black;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #000000;
 }
 
 #getBox {
@@ -18,6 +40,8 @@
   width: 70px;
   border-radius: 5px;
   text-align: center;
+  background-color: pink;
+  border: 1px solid black;
 }
 
 #inputButton {
@@ -27,6 +51,8 @@
   width: 200px;
   border-radius: 5px;
   text-align: center;
+  color: black;
+  border: 1px solid black;
 }
 
 h1 {
@@ -53,6 +79,7 @@ td {
 
 button {
   font-family: 'Luckiest Guy', cursive;
+  color: black;
 }
 
 .table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
@@ -60,4 +87,15 @@ button {
     line-height: 1.42857;
     vertical-align: middle;
     border-top: 1px solid #ddd;
+}
+
+.pokeButtons {
+  width: 100px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  margin: 0 5px 2px 0;
+}
+
+body {
+  background-color: orange;
 }

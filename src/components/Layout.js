@@ -52,8 +52,6 @@ export default class Layout extends Component {
   render() {
 
     const { pokemon, pokemons } = this.state;
-    console.log(pokemon)
-    console.log(pokemons)
 
     if (pokemon === null){
     return (
@@ -88,26 +86,28 @@ export default class Layout extends Component {
             <tr>
               <th>Image</th>
               <th>Name</th>
-              <th>Weight</th>
-              <th>Base Ex</th>
+              <th>Att</th>
+              <th>Def</th>
+              <th>HP</th>
             </tr>
           </thead>
           <tbody className="text-center">
             <tr>
               <td><img id="image" src={pokemon.sprites.front_default} alt=""/></td>
               <td>{pokemon.name}</td>
-              <td>{pokemon.weight}</td>
-              <td>{pokemon.base_experience}</td>
+              <td>{pokemon.stats[4].base_stat}</td>
+              <td>{pokemon.stats[3].base_stat}</td>
+              <td>{pokemon.stats[5].base_stat}</td>
             </tr>
           </tbody>
           </table>
-          <button onClick={this.catchThemAll} className="btn btn-block btn-large btn-warning">See All Pokemon</button>
+          <button id="seeAll" onClick={this.catchThemAll} className="btn btn-block btn-large btn-danger">See All Pokemon</button>
           <hr/>
           </div>
           <div className="col-xs-12 text-center">
           {pokemons.map((poke, index) => (
             <span key={index}>
-            <button className="btn btn-large btn-success" onClick={this.fetchPokemonFromList.bind(null, index)}>{poke.pokemon_species.name}</button>
+            <button className="btn btn-large btn-success pokeButtons" onClick={this.fetchPokemonFromList.bind(null, index)}>{poke.pokemon_species.name}</button>
             </span>
             ))}
           </div>
