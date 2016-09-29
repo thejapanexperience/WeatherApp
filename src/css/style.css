@@ -1,5 +1,60 @@
+.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+    padding: 8px;
+    line-height: 1.42857;
+    vertical-align: middle;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: top;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid black;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#forecastTable {    
+    padding: 8px;
+    line-height: 1.42857;
+    vertical-align: middle;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    font-size: 30px;
+    text-align: left;
+}
+
+#weatherTable {
+  padding: 8px;
+  line-height: 1.42857;
+  vertical-align: middle;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  font-size: 15px;
+  text-align: center;
+}
+
+#tableTitle {
+  font-size: 50px;
+}
+
 #forecastImage {
-height: 80px}
+  height: 80px;
+  border-bottom: 1px solid #fff;
+}
 
 #forecastTime {
   height: 80px;
@@ -18,23 +73,23 @@ height: 80px}
 }
 
 #state {
-  font-size: 20px;
+  font-size: 14px;
   height: 40px;
   width: 200px;
   border-radius: 5px;
   text-align: center;
-  background-color: yellow;
+  background-color: white;
   border: 1px solid black;
   color: black;
 }
 
 #city {
-  font-size: 20px;
+  font-size: 14px;
   height: 40px;
   width: 200px;
   border-radius: 5px;
   text-align: center;
-  background-color: pink;
+  background-color: white;
   border: 1px solid black;
   color: black;
 }
@@ -58,16 +113,12 @@ input {
   height: 30px;
 }
 
-/*.table {
-  font-size: 50px;
-  font-family: 'Luckiest Guy', cursive;
-  vertical-align: middle;
-}
-*/
-/*th {
-  text-align: center;
-  vertical-align: middle;
+body {
+  font-family: 'Orbitron', sans-serif;
 }
 
-td {
-}*/
+#mainContainer {
+  height: 1150px;
+  border: 20px solid gray;
+  background-image: url(http://windows10wall.com/wp-content/uploads/2014/06/fod-hd-forest-black-and-white-in-fog-cool-widescreen-free-Wallpaper.jpg)
+}
