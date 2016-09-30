@@ -27,7 +27,7 @@ const API = {
   },
 
   fetchDefaultForecast() {
-      $.get(`http://api.wunderground.com/api/04566820ef16d78a/forecast/q//autoip.json` , forecast => {
+      $.get(`//api.wunderground.com/api/04566820ef16d78a/forecast/q//autoip.json` , forecast => {
       ServerActions.receiveForecast(forecast)
     });
 
